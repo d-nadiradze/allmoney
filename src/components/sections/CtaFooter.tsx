@@ -24,8 +24,7 @@ export function CtaFooter() {
               <StoreButtons tone="primary" className="mt-8" />
             </div>
 
-            <div className="relative hidden justify-center lg:flex">
-              <div className="animate-float">
+            <div className="relative justify-center">
                 <Image
                   src="/figma/app-in-hand.svg"
                   alt="AllMoneyCard app on a phone"
@@ -34,7 +33,6 @@ export function CtaFooter() {
                   sizes="436px"
                   className="absolute -bottom-12 left-5 sm:-bottom-16  h-auto w-109 drop-shadow-[0_40px_80px_rgba(0,0,0,0.45)]"
                 />
-              </div>
             </div>
           </div>
         </div>
