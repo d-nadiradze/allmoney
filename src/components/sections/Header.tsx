@@ -63,7 +63,7 @@ export function Header() {
             aria-label="AllMoneyCard home"
             className={["transition-colors duration-300", light ? "text-ink" : "text-white"].join(" ")}
           >
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" initial={false}>
             {
               light ? (
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}>  

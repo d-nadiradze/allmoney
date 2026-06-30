@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Reveal } from "@/components/ui/Reveal";
 import { StoreButtons } from "@/components/ui/StoreButtons";
 import { HERO_ICONS } from "@/components/ui/icons";
 import { HERO } from "@/lib/content";
@@ -8,32 +7,25 @@ export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden text-white">
       <div className="rail relative pt-32 pb-40 sm:pt-36 lg:pt-20 lg:pb-56">
-        {/* Headline + CTA */}
+        {/* Headline + CTA — above the fold, painted immediately (no JS-gated entrance) */}
         <div className="mx-auto max-w-3xl text-center">
-          <Reveal delay={0.05}>
-            <h1 className="mt-6 capitalize text-balance text-display font-semibold leading-(--text-display--line-height) tracking-(--text-display--letter-spacing)">
-              {HERO.headline[0]}
-              <br />
-              <span className="bg-linear-to-r from-white via-white to-primary-soft bg-clip-text text-transparent">
-                {HERO.headline[1]}
-              </span>
-            </h1>
-          </Reveal>
+          <h1 className="mt-6 capitalize text-balance text-display font-semibold leading-(--text-display--line-height) tracking-(--text-display--letter-spacing)">
+            {HERO.headline[0]}
+            <br />
+            <span className="bg-linear-to-r from-white via-white to-primary-soft bg-clip-text text-transparent">
+              {HERO.headline[1]}
+            </span>
+          </h1>
 
-          <Reveal delay={0.12}>
-            <p className="mx-auto mt-6 max-w-xl text-pretty text-base text-white/55 sm:text-lg">
-              {HERO.subtitle}
-            </p>
-          </Reveal>
+          <p className="mx-auto mt-6 max-w-xl text-pretty text-base text-white/55 sm:text-lg">
+            {HERO.subtitle}
+          </p>
 
-          <Reveal delay={0.18}>
-            <StoreButtons className="mt-8 justify-center" />
-          </Reveal>
+          <StoreButtons className="mt-8 justify-center" />
         </div>
 
         {/* Visual composition */}
         <div className="relative mt-16 flex justify-center lg:mt-12">
-          <Reveal delay={0.08}>
           {/* Phone — LCP image, rendered immediately (no opacity entrance) */}
           <div className="relative flex justify-center z-10">
 
@@ -70,7 +62,7 @@ export function Hero() {
 
             <div className="absolute z-0 -right-95 mt-34">
               <Image
-                src="/figma/hero-card.png"
+                src="/figma/hero-card.webp"
                 alt="AllMoneyCard virtual Mastercard"
                 width={894}
                 height={648}
@@ -79,7 +71,6 @@ export function Hero() {
               />
             </div>
           </div>
-          </Reveal>
         </div>
       </div>
     </section>

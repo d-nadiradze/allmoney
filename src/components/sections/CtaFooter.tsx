@@ -11,8 +11,8 @@ export function CtaFooter() {
         <div className="relative rounded-[28px] bg-primary px-6 py-12 sm:px-12 sm:py-16 lg:px-16">
           {/* glows */}
           <div aria-hidden className="pointer-events-none absolute inset-0">
-            <div className="absolute -left-20 top-1/2 h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-primary-soft/40 blur-[120px]" />
-            <div className="absolute -right-10 -top-24 h-[380px] w-[380px] rounded-full bg-[#2B006F]/60 blur-[110px]" />
+            <div className="absolute -left-20 top-1/2 h-105 w-105 -translate-y-1/2 rounded-full bg-primary-soft/40 blur-[120px]" />
+            <div className="absolute -right-10 -top-24 h-95 w-95 rounded-full bg-[#2B006F]/60 blur-[110px]" />
           </div>
 
           <div className="relative grid gap-10 lg:grid-cols-2">
@@ -26,7 +26,7 @@ export function CtaFooter() {
 
             <div className="relative justify-center">
                 <Image
-                  src="/figma/app-in-hand.svg"
+                  src="/figma/appinhand.webp"
                   alt="AllMoneyCard app on a phone"
                   width={436}
                   height={570}
