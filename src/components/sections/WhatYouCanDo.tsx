@@ -1,9 +1,9 @@
 "use client";
 
-import { useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, A11y, Keyboard } from "swiper/modules";
+import { Pagination, A11y, Keyboard, Autoplay } from "swiper/modules";
 import type { Swiper as SwiperClass } from "swiper/types";
 import { Reveal } from "@/components/ui/Reveal";
 import { ArrowRightIcon } from "@/components/ui/icons";
@@ -13,20 +13,13 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 export function WhatYouCanDo() {
-  const prevRef = useRef<HTMLButtonElement>(null);
-  const nextRef = useRef<HTMLButtonElement>(null);
-  const paginationRef = useRef<HTMLDivElement>(null);
+  const [swiper, setSwiper] = useState<SwiperClass | null>(null);
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
 
-  const bindControls = (swiper: SwiperClass) => {
-    const nav = swiper.params.navigation;
-    if (nav && typeof nav !== "boolean") {
-      nav.prevEl = prevRef.current;
-      nav.nextEl = nextRef.current;
-    }
-    const pagination = swiper.params.pagination;
-    if (pagination && typeof pagination !== "boolean") {
-      pagination.el = paginationRef.current;
-    }
+  const syncEdges = (s: SwiperClass) => {
+    setIsBeginning(s.isBeginning);
+    setIsEnd(s.isEnd);
   };
 
   return (
@@ -41,14 +34,20 @@ export function WhatYouCanDo() {
 
       <Reveal delay={0.05} className="mt-10">
         <Swiper
-          modules={[Navigation, Pagination, A11y, Keyboard]}
-          onBeforeInit={bindControls}
+          modules={[Pagination, A11y, Keyboard, Autoplay]}
+          onSwiper={(s) => {
+            setSwiper(s);
+            syncEdges(s);
+          }}
+          onSlideChange={syncEdges}
+          onResize={syncEdges}
           keyboard={{ enabled: true }}
-          pagination={{ clickable: true }}
+          pagination={{ el: "#capabilities-pagination", clickable: true }}
           grabCursor
           spaceBetween={20}
           slidesPerView={1.12}
           speed={650}
+          autoplay={true}
           breakpoints={{
             640: { slidesPerView: 2.1, spaceBetween: 24 },
             1024: { slidesPerView: 3, spaceBetween: 24 },
@@ -83,21 +82,23 @@ export function WhatYouCanDo() {
 
         <div className="mt-6 flex items-center justify-center gap-4">
           <button
-            ref={prevRef}
             type="button"
             aria-label="Previous slide"
-            className="grid h-11 w-11 cursor-pointer place-items-center rounded-full border border-ink/15 text-ink transition-colors hover:bg-ink/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 [&.swiper-button-disabled]:pointer-events-none [&.swiper-button-disabled]:opacity-30"
+            onClick={() => swiper?.slidePrev()}
+            disabled={isBeginning}
+            className="grid cursor-pointer place-items-center text-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 disabled:pointer-events-none disabled:opacity-30"
           >
             <ArrowRightIcon className="h-4 w-4 rotate-180" />
           </button>
 
-          <div ref={paginationRef} className="static! flex! w-auto items-center justify-center gap-1" />
+          <div id="capabilities-pagination" className="static! flex! w-auto! items-center justify-center gap-1" />
 
           <button
-            ref={nextRef}
             type="button"
             aria-label="Next slide"
-            className="grid h-11 w-11 cursor-pointer place-items-center rounded-full border border-ink/15 text-ink transition-colors hover:bg-ink/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 [&.swiper-button-disabled]:pointer-events-none [&.swiper-button-disabled]:opacity-30"
+            onClick={() => swiper?.slideNext()}
+            disabled={isEnd}
+            className="grid cursor-pointer place-items-center text-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 disabled:pointer-events-none disabled:opacity-30"
           >
             <ArrowRightIcon className="h-4 w-4" />
           </button>
