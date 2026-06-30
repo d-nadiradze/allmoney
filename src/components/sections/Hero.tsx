@@ -1,0 +1,85 @@
+import Image from "next/image";
+import { Reveal } from "@/components/ui/Reveal";
+import { StoreButtons } from "@/components/ui/StoreButtons";
+import { HERO_ICONS } from "@/components/ui/icons";
+import { HERO } from "@/lib/content";
+
+export function Hero() {
+  return (
+    <section id="top" className="relative overflow-hidden text-white">
+      <div className="rail relative pt-32 pb-40 sm:pt-36 lg:pt-20 lg:pb-56">
+        {/* Headline + CTA */}
+        <div className="mx-auto max-w-3xl text-center">
+          <Reveal delay={0.05}>
+            <h1 className="mt-6 capitalize text-balance text-display font-semibold leading-[var(--text-display--line-height)] tracking-[var(--text-display--letter-spacing)]">
+              {HERO.headline[0]}
+              <br />
+              <span className="bg-gradient-to-r from-white via-white to-primary-soft bg-clip-text text-transparent">
+                {HERO.headline[1]}
+              </span>
+            </h1>
+          </Reveal>
+
+          <Reveal delay={0.12}>
+            <p className="mx-auto mt-6 max-w-xl text-pretty text-base text-white/55 sm:text-lg">
+              {HERO.subtitle}
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.18}>
+            <StoreButtons className="mt-8 justify-center" />
+          </Reveal>
+        </div>
+
+        {/* Visual composition */}
+        <div className="relative mt-16 flex justify-center lg:mt-12">
+          {/* Phone — LCP image, rendered immediately (no opacity entrance) */}
+          <div className="relative flex justify-center z-10">
+
+          <div className="glass absolute left-[-350px] backdrop-blur-[35.4px] max-w-[355px] w-full rounded-2xl p-4 mt-18">
+              <ul className="space-y-3">
+                {HERO.highlights.map((h) => {
+                  const Icon = HERO_ICONS[h.icon];
+                  return (
+                    <li key={h.title} className="flex gap-3 rounded-xl transition-color items-center">
+                      <span className="grid h-[64px] w-[64px] shrink-0 place-items-center rounded-xl bg-[#100C2F] text-primary-soft">
+                        <Icon className="h-[24px] w-[24px] text-white" />
+                      </span>
+                      <div className="min-w-0">
+                        <p className="text-sm font-bold leading-[17px] text-white">{h.title}</p>
+                        <p className="mt-1 text-xs leading-snug text-white/50">{h.body}</p>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+          </div>
+
+            <Image
+              src="/figma/phone-hero.webp"
+              alt="AllMoneyCard mobile app showing balance, cards and transactions"
+              width={743}
+              height={1196}
+              priority
+              loading="eager"
+              fetchPriority="high"
+              sizes="(max-width: 768px) 70vw, 360px"
+              className="h-auto w-[260px] z-10 drop-shadow-[0_40px_80px_rgba(0,0,0,0.55)] sm:w-[300px] lg:w-[360px]"
+            />  
+
+            <div className="absolute z-0 right-[-380px] mt-34">
+              <Image
+                src="/figma/hero-card.png"
+                alt="AllMoneyCard virtual Mastercard"
+                width={894}
+                height={648}
+                sizes="400px"
+                className="h-auto w-full"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
