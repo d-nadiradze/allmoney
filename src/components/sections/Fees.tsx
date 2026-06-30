@@ -49,7 +49,7 @@ export function Fees() {
         <div className="mt-12 flex flex-col sm:flex-row justify-center items-start gap-6">
           <div className="bg-ink w-full sm:w-auto rounded-card p-6 shadow-[0_30px_60px_-40px_rgba(0,7,52,0.35)]">
               <Image
-                src="/figma/hero-card.png"
+                src="/figma/hero-card.webp"
                 alt="Virtual Mastercard with a card issuance fee of 5.99$"
                 width={586}
                 height={724}

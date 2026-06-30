@@ -16,7 +16,17 @@ export function StickyHero() {
 
   return (
     <div className="sticky top-0 z-0 bg-night">
-      <Image src="/hero-bg.svg" alt="AllMoneyCard hero background" className="absolute w-full h-full object-cover" width={1440} height={1024} />
+      <Image
+        src="/hero-bg.webp"
+        alt=""
+        aria-hidden
+        priority
+        fetchPriority="high"
+        sizes="100vw"
+        className="absolute w-full h-full object-cover"
+        width={1920}
+        height={1119}
+      />
       <motion.div
         style={{ scale }}
         className="relative z-10 origin-top will-change-transform"
