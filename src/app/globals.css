@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Brand palette (from Figma) */
+  --color-surface: #f2f3f9;
+  --color-ink: #000734;
+  --color-ink-soft: #00062c;
+  --color-ink-muted: #8e8ea4;
+  --color-primary: #7235d5;
+  --color-primary-deep: #561eb2;
+  --color-primary-soft: #8d46ff;
+  --color-night: #030303;
+  --color-night-2: #121212;
+  --color-hairline: #e1e1e2;
+
+  --radius-card: 16px;
+
+  /* Fluid type scale used across sections */
+  --text-display: clamp(2rem, 1.1rem + 4.2vw, 4rem);
+  --text-display--line-height: 1.06;
+  --text-display--letter-spacing: -0.03em;
+
+  --text-headline: clamp(1.5rem, 1.1rem + 1.6vw, 2rem);
+  --text-headline--line-height: 1.12;
+  --text-headline--letter-spacing: -0.03em;
+
+  --text-cardtitle: clamp(1.25rem, 1rem + 1vw, 1.5rem);
+  --text-cardtitle--line-height: 1.15;
+  --text-cardtitle--letter-spacing: -0.02em;
+}
+
+@layer base {
+  :root {
+    --gutter: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --gutter: 2.5rem;
+    }
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
+    color: var(--color-ink);
+  }
+
+  /* Respect reduced motion globally */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Centered max-width content rail mirroring the 1440px Figma frame */
+  .rail {
+    width: 100%;
+    max-width: 1480px;
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    border: 1px solid var(--color-hairline);
+    background: #fff;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+    white-space: nowrap;
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      border-color 0.25s ease;
+  }
+
+  .pill:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-hairline));
+    box-shadow: 0 12px 30px -16px rgba(114, 53, 213, 0.5);
+  }
+}
+
+@utility glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0);
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(var(--tw-rotate, 0deg));
+  }
+  50% {
+    transform: translate3d(0, -10px, 0) rotate(var(--tw-rotate, 0deg));
+  }
+}
+
+@utility animate-float {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+@utility animate-float-delayed {
+  animation: float-soft 8s ease-in-out infinite;
+  animation-delay: -2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-float-delayed {
+    animation: none;
+  }
+}
