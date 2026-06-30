@@ -5,9 +5,9 @@ import { FEATURES } from "@/lib/content";
 
 export function Features() {
   return (
-    <section id="features" className="rail scroll-mt-24 py-20 sm:py-28">
+    <section id="features" className="rail scroll-mt-24 py-10 sm:py-28">
       <Reveal>
-        <h2 className="mx-auto capitalize max-w-4xl text-[64px] text-center text-headline font-semibold leading-[72px] tracking-[-2px] text-ink">
+        <h2 className="mx-auto text-center capitalize text-balance text-display font-semibold leading-(--text-display--line-height) tracking-(--text-display--letter-spacing)">
           {FEATURES.title[0]}
           <br className="hidden sm:block" /> {FEATURES.title[1]}
         </h2>

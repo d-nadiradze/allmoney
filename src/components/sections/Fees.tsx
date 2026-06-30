@@ -7,7 +7,7 @@ type Row = { label: string; value: string };
 
 function FeeList({ title, rows, footer }: { title: string; rows: Row[]; footer?: React.ReactNode }) {
   return (
-    <div className="rounded-card min-w-[447px] bg-white p-6 shadow-[0_30px_60px_-40px_rgba(0,7,52,0.35)]">
+    <div className="rounded-card w-full sm:min-w-[447px] bg-white p-6 shadow-[0_30px_60px_-40px_rgba(0,7,52,0.35)]">
       <h3 className="text-cardtitle font-semibold tracking-tight text-ink">{title}</h3>
       <dl className="mt-5 divide-y divide-hairline">
         {rows.map((row) => (
@@ -36,7 +36,7 @@ export function Fees() {
     >
       <div className="rail">
         <Reveal>
-          <h2 className="text-center capitalize text-[64px] text-balance text-headline font-semibold leading-[72px] tracking-[-2px] text-ink">
+          <h2 className="mx-auto text-center capitalize text-balance text-display font-semibold leading-(--text-display--line-height) tracking-(--text-display--letter-spacing)">
             {FEES.title}
           </h2>
         </Reveal>
@@ -46,8 +46,8 @@ export function Fees() {
           </p>
         </Reveal>
 
-        <div className="mt-12 flex justify-center items-start gap-6">
-          <div className="bg-ink rounded-card p-6 shadow-[0_30px_60px_-40px_rgba(0,7,52,0.35)]">
+        <div className="mt-12 flex flex-col sm:flex-row justify-center items-start gap-6">
+          <div className="bg-ink w-full sm:w-auto rounded-card p-6 shadow-[0_30px_60px_-40px_rgba(0,7,52,0.35)]">
               <Image
                 src="/figma/hero-card.png"
                 alt="Virtual Mastercard with a card issuance fee of 5.99$"
@@ -73,8 +73,8 @@ export function Fees() {
             <FeeList title={FEES.feesColumn.title} rows={FEES.feesColumn.rows} />
           </Reveal>
 
-          <Reveal delay={0.14}>
-            <div className="flex h-full flex-col gap-4">
+          <Reveal delay={0.14} className="w-full sm:w-auto">
+            <div className="flex h-full w-full sm:w-auto flex-col gap-4">
               <FeeList 
               title={FEES.limitsColumn.title} 
               rows={FEES.limitsColumn.rows} 

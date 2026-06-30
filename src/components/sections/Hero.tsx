@@ -11,10 +11,10 @@ export function Hero() {
         {/* Headline + CTA */}
         <div className="mx-auto max-w-3xl text-center">
           <Reveal delay={0.05}>
-            <h1 className="mt-6 capitalize text-balance text-display font-semibold leading-[var(--text-display--line-height)] tracking-[var(--text-display--letter-spacing)]">
+            <h1 className="mt-6 capitalize text-balance text-display font-semibold leading-(--text-display--line-height) tracking-(--text-display--letter-spacing)">
               {HERO.headline[0]}
               <br />
-              <span className="bg-gradient-to-r from-white via-white to-primary-soft bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-white via-white to-primary-soft bg-clip-text text-transparent">
                 {HERO.headline[1]}
               </span>
             </h1>
@@ -33,20 +33,21 @@ export function Hero() {
 
         {/* Visual composition */}
         <div className="relative mt-16 flex justify-center lg:mt-12">
+          <Reveal delay={0.08}>
           {/* Phone — LCP image, rendered immediately (no opacity entrance) */}
           <div className="relative flex justify-center z-10">
 
-          <div className="glass absolute left-[-350px] backdrop-blur-[35.4px] max-w-[355px] w-full rounded-2xl p-4 mt-18">
+          <div className="glass absolute -left-87.5 backdrop-blur-[35.4px] max-w-88.75 w-full rounded-2xl p-4 mt-18">
               <ul className="space-y-3">
                 {HERO.highlights.map((h) => {
                   const Icon = HERO_ICONS[h.icon];
                   return (
                     <li key={h.title} className="flex gap-3 rounded-xl transition-color items-center">
-                      <span className="grid h-[64px] w-[64px] shrink-0 place-items-center rounded-xl bg-[#100C2F] text-primary-soft">
-                        <Icon className="h-[24px] w-[24px] text-white" />
+                      <span className="grid h-16 w-16 shrink-0 place-items-center rounded-xl bg-[#100C2F] text-primary-soft">
+                        <Icon className="h-6 w-6 text-white" />
                       </span>
                       <div className="min-w-0">
-                        <p className="text-sm font-bold leading-[17px] text-white">{h.title}</p>
+                        <p className="text-sm font-bold leading-4.25 text-white">{h.title}</p>
                         <p className="mt-1 text-xs leading-snug text-white/50">{h.body}</p>
                       </div>
                     </li>
@@ -64,10 +65,10 @@ export function Hero() {
               loading="eager"
               fetchPriority="high"
               sizes="(max-width: 768px) 70vw, 360px"
-              className="h-auto w-[260px] z-10 drop-shadow-[0_40px_80px_rgba(0,0,0,0.55)] sm:w-[300px] lg:w-[360px]"
+              className="h-auto w-65 z-10 drop-shadow-[0_40px_80px_rgba(0,0,0,0.55)] sm:w-75 lg:w-90"
             />  
 
-            <div className="absolute z-0 right-[-380px] mt-34">
+            <div className="absolute z-0 -right-95 mt-34">
               <Image
                 src="/figma/hero-card.png"
                 alt="AllMoneyCard virtual Mastercard"
@@ -78,6 +79,7 @@ export function Hero() {
               />
             </div>
           </div>
+          </Reveal>
         </div>
       </div>
     </section>

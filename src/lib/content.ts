@@ -144,13 +144,14 @@ export const STEPS = [
     step: "Step 1",
     title: "Choose your app",
     body: "Open AllMoneyCard in Telegram, iOS or Android",
-    icon: "/figma/step-1.webp",
+    icon: "/figma/step-2.webp", 
   },
   {
     step: "Step 2",
     title: "Create your account",
     body: "Sign up with your phone number and email",
-    icon: "/figma/step-2.webp",
+   icon: "/figma/step-1.webp",
+
   },
   {
     step: "Step 3",
