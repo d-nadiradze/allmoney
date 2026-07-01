@@ -27,7 +27,7 @@ export function FeaturePills({ items, className = "" }: FeaturePillsProps) {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, margin: "-60px" }}
-      className={`flex flex-wrap justify-center gap-2.5 ${className}`}
+      className={`flex flex-wrap justify-center gap-1.5 ${className}`}
     >
       {items.map((label) => (
         <motion.li key={label} variants={item}>

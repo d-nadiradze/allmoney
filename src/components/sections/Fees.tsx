@@ -7,23 +7,19 @@ type Row = { label: string; value: string };
 
 function FeeList({ title, rows, footer }: { title: string; rows: Row[]; footer?: React.ReactNode }) {
   return (
-    <div className="rounded-card w-full sm:min-w-[447px] bg-white p-6 shadow-[0_30px_60px_-40px_rgba(0,7,52,0.35)]">
-      <h3 className="text-cardtitle font-semibold tracking-tight text-ink">{title}</h3>
-      <dl className="mt-5 divide-y divide-hairline">
-        {rows.map((row) => (
-          <div key={row.label} className="flex items-center justify-between gap-6 py-3.5">
-            <dt className="text-sm text-ink/80">{row.label}</dt>
-            <dd className="shrink-0 text-right text-sm font-semibold text-ink">{row.value}</dd>
-          </div>
-        ))}
-      </dl>
-      {
-        footer && (
-          <div className="mt-6 text-center">
-            {footer}
-          </div>
-        )
-      }
+    <div className="liquid-glass bg-white/90 rounded-card h-full w-full sm:min-w-[447px] p-6 text-ink">
+      <div className="relative z-10">
+        <h3 className="text-cardtitle font-semibold tracking-tight text-ink">{title}</h3>
+        <dl className="mt-5 divide-y divide-ink/10">
+          {rows.map((row) => (
+            <div key={row.label} className="flex items-center justify-between gap-6 py-3.5">
+              <dt className="text-sm text-ink/80">{row.label}</dt>
+              <dd className="shrink-0 text-right text-sm font-semibold text-ink">{row.value}</dd>
+            </div>
+          ))}
+        </dl>
+        {footer && <div className="mt-6 text-center">{footer}</div>}
+      </div>
     </div>
   );
 }
@@ -46,15 +42,15 @@ export function Fees() {
           </p>
         </Reveal>
 
-        <div className="mt-12 flex flex-col sm:flex-row justify-center items-start gap-6">
-          <div className="bg-ink w-full sm:w-auto rounded-card p-6 shadow-[0_30px_60px_-40px_rgba(0,7,52,0.35)]">
+        <div className="mt-12 flex flex-col md:flex-row justify-center items-stretch gap-6">
+          <div className="bg-ink w-full min-w-[292px] md:w-auto rounded-card p-6 shadow-[0_30px_60px_-40px_rgba(0,7,52,0.35)]">
               <Image
                 src="/figma/hero-card.webp"
                 alt="Virtual Mastercard with a card issuance fee of 5.99$"
                 width={586}
                 height={724}
                 sizes="(max-width: 1024px) 60vw, 245px"
-                className="h-auto w-full max-w-[245px]"
+                className="h-auto w-full max-w-[245px] mx-auto flex-shink-0"
               />
               <div className="text-white">
                 <p className="text-[24px] max-w-[124px] mt-[22px] mb-[30px]">{FEES.issuance.note}</p>
@@ -69,11 +65,11 @@ export function Fees() {
               </div>
           </div>
 
-          <Reveal delay={0.08}>
+          <Reveal delay={0.08} className="w-full md:w-auto">
             <FeeList title={FEES.feesColumn.title} rows={FEES.feesColumn.rows} />
           </Reveal>
 
-          <Reveal delay={0.14} className="w-full sm:w-auto">
+          <Reveal delay={0.14} className="w-full md:w-auto">
             <div className="flex h-full w-full sm:w-auto flex-col gap-4">
               <FeeList 
               title={FEES.limitsColumn.title} 

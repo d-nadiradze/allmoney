@@ -5,23 +5,23 @@ import { CTA, FOOTER_LINKS } from "@/lib/content";
 
 export function CtaFooter() {
   return (
-    <footer id="download" className="rail scroll-mt-24 pb-12 pt-40 sm:pt-10">
+    <footer id="download" className="scroll-mt-24 pb-12 pt-0 sm:pt-10">
       {/* CTA card */}
-      <Reveal>
-        <div className="relative rounded-[28px] bg-primary px-6 py-12 sm:px-12 sm:py-16 lg:px-16">
+      <Reveal className={'mx-0 md:mx-5'}>
+        <div className="rail relative sm:overflow-visible overflow-hidden rounded-[28px] bg-primary py-8 pb-0 sm:py-16">
           {/* glows */}
-          <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden rounded-[28px]">
             <div className="absolute -left-20 top-1/2 h-105 w-105 -translate-y-1/2 rounded-full bg-primary-soft/40 blur-[120px]" />
             <div className="absolute -right-10 -top-24 h-95 w-95 rounded-full bg-[#2B006F]/60 blur-[110px]" />
           </div>
 
           <div className="relative grid gap-10 lg:grid-cols-2">
             <div>
-              <h2 className="max-w-md text-display font-semibold leading-[1.05] tracking-[-0.03em] text-white">
+              <h2 className="max-w-md sm:text-left text-center text-display font-semibold leading-[1.05] tracking-[-0.03em] text-white">
                 {CTA.title}
               </h2>
-              <p className="mt-5 max-w-md text-base text-white/70 sm:text-lg">{CTA.subtitle}</p>
-              <StoreButtons tone="primary" className="mt-8" />
+              <p className="mt-2 max-w-md text-sm text-white/70 sm:text-lg sm:text-left text-center">{CTA.subtitle}</p>
+              <StoreButtons className="mt-8" />
             </div>
 
             <div className="relative justify-center">
@@ -31,7 +31,7 @@ export function CtaFooter() {
                   width={436}
                   height={570}
                   sizes="436px"
-                  className="absolute -bottom-12 left-5 sm:-bottom-16  h-auto w-109 drop-shadow-[0_40px_80px_rgba(0,0,0,0.45)]"
+                  className="md:absolute relative bottom-0 left-5 sm:-bottom-16  h-auto w-109 drop-shadow-[0_40px_80px_rgba(0,0,0,0.45)]"
                 />
             </div>
           </div>
@@ -39,7 +39,7 @@ export function CtaFooter() {
       </Reveal>
 
       {/* Footer bar */}
-      <div className="mt-12 border-t border-ink/10 pt-8">
+      <div className="rail mt-12 border-t border-ink/10 pt-8">
         <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
           <a href="#top" aria-label="AllMoneyCard home" className="text-ink">
             <Image src="/icon-purple.svg" alt="AllMoneyCard logo" width={176} height={27.33} />

@@ -64,14 +64,14 @@ export const CAPABILITIES: Capability[] = [
     index: ".01",
     title: "Pay for subscriptions",
     caption: "Apps, tools, streaming and online services",
-    image: "/figma/card-subscriptions.webp",
+    image: "/slider/1.webp",
     alt: "Woman holding a phone with the AllMoneyCard app showing balance and cards",
   },
   {
     index: ".02",
-    title: "Add funds and start paying online",
+    title: "Top up from AllMoneyCard or USDT",
     caption: "Top up from AllMoneyCard or USDT",
-    image: "/figma/card-topup.webp",
+    image: "/slider/2.webp",
     alt: "Top up your card balance from AllMoneyCard or with USDT in EUR, GEL, USD",
   },
   {
