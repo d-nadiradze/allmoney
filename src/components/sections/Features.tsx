@@ -5,7 +5,7 @@ import { FEATURES } from "@/lib/content";
 
 export function Features() {
   return (
-    <section id="features" className="rail scroll-mt-24 py-10 sm:py-28">
+    <section id="features" className="rail scroll-mt-24 px-0 py-10 sm:px-10 sm:py-28">
       <Reveal>
         <h2 className="mx-auto text-center capitalize text-balance text-display font-semibold leading-(--text-display--line-height) tracking-(--text-display--letter-spacing)">
           {FEATURES.title[0]}
@@ -28,7 +28,7 @@ export function Features() {
         />
       </Reveal>
 
-      <FeaturePills items={FEATURES.pills} className="relative -mt-14 max-w-3xl mx-auto" />
+      <FeaturePills items={FEATURES.pills} className="relative -mt-14 max-w-200 mx-auto" />
     </section>
   );
 }

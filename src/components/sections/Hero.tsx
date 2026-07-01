@@ -6,7 +6,7 @@ import { HERO } from "@/lib/content";
 export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden text-white">
-      <div className="rail relative pt-32 pb-40 sm:pt-36 lg:pt-20 lg:pb-56">
+      <div className="rail relative pt-16 pb-40 sm:pt-36 lg:pt-20 lg:pb-56">
         {/* Headline + CTA — above the fold, painted immediately (no JS-gated entrance) */}
         <div className="mx-auto max-w-3xl text-center">
           <h1 className="mt-6 capitalize text-balance text-display font-semibold leading-(--text-display--line-height) tracking-(--text-display--letter-spacing)">
@@ -25,11 +25,11 @@ export function Hero() {
         </div>
 
         {/* Visual composition */}
-        <div className="relative mt-16 flex justify-center lg:mt-12">
+        <div className="relative mt-10 flex justify-center lg:mt-12">
           {/* Phone — LCP image, rendered immediately (no opacity entrance) */}
           <div className="relative flex justify-center z-10">
 
-          <div className="glass absolute -left-87.5 backdrop-blur-[35.4px] max-w-88.75 w-full rounded-2xl p-4 mt-18">
+          <div className="md:flex hidden glass absolute -left-87.5 backdrop-blur-[35.4px] max-w-88.75 w-full rounded-2xl p-4 mt-18">
               <ul className="space-y-3">
                 {HERO.highlights.map((h) => {
                   const Icon = HERO_ICONS[h.icon];
@@ -60,7 +60,7 @@ export function Hero() {
               className="h-auto w-65 z-10 drop-shadow-[0_40px_80px_rgba(0,0,0,0.55)] sm:w-75 lg:w-90"
             />  
 
-            <div className="absolute z-0 -right-95 mt-34">
+            <div className="absolute md:flex hidden z-0 -right-90 mt-34">
               <Image
                 src="/figma/hero-card.webp"
                 alt="AllMoneyCard virtual Mastercard"

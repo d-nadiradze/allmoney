@@ -23,11 +23,11 @@ export function WhatYouCanDo() {
   };
 
   return (
-    <section id="capabilities" className="scroll-mt-24 overflow-hidden py-10 sm:py-20">
+    <section id="capabilities" className="scroll-mt-24 overflow-hidden py-10 sm:py-20 ml-10 md:mr-10 mr-0">
       <div className="">
         <Reveal>
           <h2 className="mx-auto text-center capitalize text-balance text-display font-semibold leading-(--text-display--line-height) tracking-(--text-display--letter-spacing)">
-            What you can do with AllMoneyCard
+            Everything you can do with the AllMoney Card
           </h2>
         </Reveal>
       </div>
@@ -50,9 +50,11 @@ export function WhatYouCanDo() {
           autoplay={true}
           breakpoints={{
             640: { slidesPerView: 2.1, spaceBetween: 24 },
+            768: { slidesPerView: 2.1, spaceBetween: 24 },
             1024: { slidesPerView: 3, spaceBetween: 24 },
+            1500: { slidesPerView: 4, spaceBetween: 24 },
           }}
-          className="px-(--gutter)! pb-2!"
+          className="pb-2!"
           style={
             {
               "--swiper-pagination-color": "#7235d5",
@@ -63,20 +65,29 @@ export function WhatYouCanDo() {
           }
         >
           {CAPABILITIES.map((cap) => (
-            <SwiperSlide key={cap.index} className="h-auto">
-              <article className="group relative aspect-[478/639] overflow-hidden rounded-3xl bg-ink/5">
-                <Image
-                  src={cap.image}
-                  alt={cap.alt}
-                  fill
-                  sizes="(max-width: 640px) 88vw, (max-width: 1024px) 46vw, 31vw"
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-                />
-                <span className="sr-only">
-                  {cap.index} — {cap.title}. {cap.caption}
-                </span>
-              </article>
-            </SwiperSlide>
+              <SwiperSlide key={cap.index} className="h-auto">
+                <article className="group relative w-full aspect-[477/639] overflow-hidden rounded-3xl bg-ink/5">
+                  <Image
+                      src={cap.image}
+                      alt={cap.alt}
+                      fill
+                      sizes="(max-width: 477px) 100vw, 477px"
+                      className="z-0 relative object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  />
+                  {/* Bottom scrim so the title/caption stay legible over the photo */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(180deg,#21133E00_0%,#21133E_100%)]"
+                  />
+                  <div className="z-10 p-[10%] relative flex flex-col h-full justify-between text-white">
+                    <p className={'text-sm font-bold'}>{cap.index}</p>
+                    <div className="">
+                        <p className={'text-[32px] capitalize font-bold mb-2 leading-10 tracking-[-1px] max-w-[370px]'}>{cap.title}</p>
+                        <p>{cap.alt}</p>
+                    </div>
+                  </div>
+                </article>
+              </SwiperSlide>
           ))}
         </Swiper>
 
